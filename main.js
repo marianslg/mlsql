@@ -1,7 +1,6 @@
-import { ml_search, ml_search_all } from "./modules/meli/search_functions.js";
 import * as db from "./modules/db/db.js";
 import * as meli from "./modules/meli/meli.js"
-import * as configs from "./modules/configs.js"
+
 const delay_pre_search_item = 400;
 var total_result_pre_search = 0;
 
@@ -22,7 +21,7 @@ document.getElementById("button-execute-query").addEventListener('click', execut
 
 async function pre_search_item() {
     let input = document.getElementById('search-value').value;
-    let first_search_result = await ml_search(input);
+    let first_search_result = await meli.search(input);
     total_result_pre_search = first_search_result[1].paging.total;
     document.getElementById('text-pre-search').innerHTML = total_result_pre_search + " items encontrados aprox."
 }
@@ -49,7 +48,7 @@ function execute_query() {
 
     let cant_rows = 0;
     let result_status = document.getElementById("result-status");
-    
+
     document.getElementById("result-content").innerHTML = "";
 
     if (result_query[0]) {
