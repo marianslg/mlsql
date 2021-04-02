@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>ML SQL</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/0.3.2/js/sql.js"
+    integrity="sha512-oPc+qFCHM3DkxsNn2OtJzS3NS8Nkl87XGsOPsJmBYEeQkyEfVaKetewEjOg9le9kAMftoE7Y0WtMtAsko/v4mw=="
+    crossorigin="anonymous"></script>
+  <script type="module" src="./main.js"></script>
+  <link rel="stylesheet" href="main.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <header class="head">
+      <input type="text" id="search-value" size="100" value="celular nokia">
+      <button id="button-search">Buscar</button>
+      <button id="button-execute-query" disabled>Run SQL</button>
+      <span id="text-pre-search"></span>
+    </header>
+    <div class="sql">
+      <textarea name="query" id="textarea-query"></textarea>
+    </div>
+    <div class="result" id="result-content"></div>
+    <div class="result-info">
+      <span id="result-status"></span>
+      <span id="result-stats"></span>
+    </div>
+  </div>
+
+</body>
+
+</html>
