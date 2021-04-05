@@ -11,39 +11,55 @@
     crossorigin="anonymous"></script>
   <script type="module" src="./main.js"></script>
   <link rel="stylesheet" href="main.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Ubuntu+Mono&display=swap" rel="stylesheet">
-
-
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
-
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <header class="header">
+    <div class="header-search">
+      <div class="search">
+        <input type="text" id="input-search-value" value="celular nokia">
+        <button class="button-search" id="button-search"></button>
+      </div>
+      <span id="info-search"></span>
+    </div>
+  </header>
+
+  <style type="text/css">
+    option.first {
+      display: none;
+      height: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+  </style>
   <div class="container">
-    <header class="head">
-      <input type="text" id="search-value" size="100" value="celular nokia">
-      <button id="button-search">Buscar</button>
-      <button id="button-execute-query" disabled>Run SQL</button>
-      <span id="text-pre-search"></span>
-    </header>
-    <div class="sql">
+    <div class="sql-menu">
+      <button class="button-sql-menu" id="button-execute-query" disabled>Run</button>
+    </div>
+    <div class="container-query">
       <textarea name="query" id="textarea-query"></textarea>
     </div>
-    <div class="result" id="result-content"></div>
-    <div class="result-info">
-      <span id="result-status"></span>
-      <span id="result-stats"></span>
+    <!--<div class="sql-result">
+      <button class="button-result-menu" id="button-execute-query" disabled>Resultado</button>
+      <button class="button-result-menu" id="button-execute-query" disabled>Mensajes</button>
+    </div>-->
+    <div class="result" id="result-content">
+      <div id="result-text"></div>
     </div>
+    <div class="result-info">
+      <b>
+        <span id="result-status"></span>
+        <span id="result-stats"></span>
+      </b>
+    </div>
+    <!--<div class="placeholder" data-placeholder="/hrs">
+      <input value="My texttttttttttt" />
+    </div>-->
   </div>
-
 </body>
 
 </html>

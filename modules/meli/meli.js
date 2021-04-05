@@ -56,6 +56,7 @@ export async function search(input) {
 }
 
 export async function search_all_items(input, total) {
+    let total_results_real = 0;
     let first_search_result = await search(input, 0);
     let total_results = first_search_result[1].paging.total;
 
@@ -74,13 +75,10 @@ export async function search_all_items(input, total) {
         response.forEach(function (value) {
             value.results.forEach(function (value_response) {
                 let query_inserts = db.bd_builds.buil_query_insert_into(value_response)
-
+                total_results_real++;
                 if (query_inserts[0]) {
                     query_inserts[1].forEach(function (query) {
-
-                        let result = db.insert(query);
-
-                        //if (!result[0]) console.error(result[1]);
+                        db.insert(query)                       
                     });
                 } else {
                     console.error(query_inserts[1]);
@@ -91,5 +89,5 @@ export async function search_all_items(input, total) {
         console.log("catch " + reason)
     });
 
-    return search_responses;
+    return total_results_real;
 }

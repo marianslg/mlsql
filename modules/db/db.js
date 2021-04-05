@@ -20,8 +20,9 @@ export function create_tables() {
 }
 
 export function execute_query(query) {
-    //console.log("QUERY: " + txtarea.value.substring(start, finish))
     try {
+        //let result = 
+        console.log(sql_client.exec(query));
         let result = [];
 
         var stmt = sql_client.prepare(query);
