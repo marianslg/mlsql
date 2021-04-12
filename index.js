@@ -14,6 +14,15 @@ if (localStorage has 'acc_token')
             continue
     else
         cointinue
+
+if (url params has 'code')
+    if generate_token()
+        save ref_token and acc_token
+        go to search.html
+    else
+        continue
+else
+    continue    
 */
 
 var urlParams = new URLSearchParams(window.location.search);
@@ -38,6 +47,22 @@ if (acc_token != null) {
 
             //   window.location.href = "search.html";
         }
+    }
+}
+
+if (urlParams.has('code')) {
+    let code = urlParams.get('code')
+
+    let json = await generate_token(code);
+
+    if (json.refresh_token != undefined && json.access_token != undefined) {
+        localStorage.setItem("ref_token", json.refresh_token);
+        localStorage.setItem("acc_token", json.access_token);
+
+        loc = "search.html";
+        //   window.location.href = "search.html";
+    } else {
+        alert("Error en autenticación: \n" + json.message);
     }
 }
 
