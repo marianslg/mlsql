@@ -4,15 +4,19 @@ export var location = await set_location();
 export var meli_site_id = get_site_id(location.region_name);
 
 async function set_location() {
-    console.log("get_contry_code()")
-    let repsonse = await fetch("http://ip-api.com/json")
+    try {
+        console.log("get_contry_code()");
+        let repsonse = await fetch("http://ip-api.com/json");
 
-    let json = await repsonse.json()
+        let json = await repsonse.json();
 
-    let location = { "country_code": json.countryCode, "region_name": json.regionName }
-    console.log(location)
+        let location = { "country_code": json.countryCode, "region_name": json.regionName };
+        console.log(location);
 
-    return location;
+        return location;
+    } catch {
+        return { "country_code": "AR", "region_name": "Argentina" };
+    }
 }
 
 function get_site_id(country_name) {
