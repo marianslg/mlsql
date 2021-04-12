@@ -10,7 +10,7 @@
         integrity="sha512-oPc+qFCHM3DkxsNn2OtJzS3NS8Nkl87XGsOPsJmBYEeQkyEfVaKetewEjOg9le9kAMftoE7Y0WtMtAsko/v4mw=="
         crossorigin="anonymous"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script type="module" src='index.js'></script>
+    <script type="module" src='auth.js'></script>
 </head>
 
 <body>
@@ -23,14 +23,26 @@
             width: 80vw;
             text-align: center;
         }
-
-        #image-logo {
-            max-width: 100%;
-            height: auto;
-        }
     </style>
 
-    <div id="divElement"><img id="image-logo" src="./images/logo.png"></div>
+    <div id="divElement"> Por favor, autorice la conexión con Mercado Libre para generar un access token.
+        <br>
+        <button style="margin-top: 20px; padding: 5px;" id="but-auth">
+            Autorizar aplicación
+        </button>
+        <button style="margin-top: 20px; padding: 5px;" id="but-borrar-acc">
+            borrar acc
+        </button>
+        <button style="margin-top: 20px; padding: 5px;" id="but-borrar-ref">
+            borrar refr
+        </button>
+        <button style="margin-top: 20px; padding: 5px;" id="but-mod-ref">
+            mod refr
+        </button>
+        <button style="margin-top: 20px; padding: 5px;" id="but-mod-acc">
+            mod acc
+        </button>
+    </div>
 </body>
 
 </html>
