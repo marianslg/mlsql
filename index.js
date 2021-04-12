@@ -1,4 +1,4 @@
-import { test_token, refresh_token } from "./modules/meli/meli.js";
+import { test_token, refresh_token, generate_token } from "./modules/meli/meli.js";
 
 /*
 algoritm:
