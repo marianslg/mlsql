@@ -9,6 +9,9 @@ export async function refresh_token(refresh_token) {
 
     let json = await repsonse.json();
 
+    if (repsonse.status == 200)
+        json.status = 200;
+
     return json;
 };
 
