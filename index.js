@@ -34,7 +34,7 @@ if (acc_token != null) {
     if (await test_token()) {
         href = "search.html";
     } else if (ref_token != null) {
-        let result_refresh = await refresh_token();
+        let result_refresh = await refresh_token(ref_token);
 
         if (result_refresh.status == 200) {
             localStorage.setItem("acc_token", result_refresh.access_token);
