@@ -19,17 +19,33 @@ if (localStorage has 'acc_token')
 var ref_token = localStorage.getItem('ref_token');
 var acc_token = localStorage.getItem('acc_token');
 
+console.log(ref_token)
+console.log(acc_token)
+
+var loc = "";
+
 if (acc_token != null) {
     if (await test_token()) {
-        window.location.href = "search.html";
+        // window.location.href = "search.html";
+        loc = "search.html";
     } else if (ref_token != null) {
         let result_refresh = await refresh_token();
 
         if (result_refresh.status == 200) {
             localStorage.setItem("acc_token", result_refresh.access_token);
-            window.location.href = "search.html";
+            loc = "search.html";
+
+            //   window.location.href = "search.html";
         }
     }
 }
 
-window.location.href = "auth.html";
+document.getElementById("but-auth").addEventListener('click', ir);
+
+function ir() {
+    if (loc != "") {
+        window.location.href = loc;
+    } else {
+        window.location.href = "auth.html";
+    }
+}
