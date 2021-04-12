@@ -16,6 +16,7 @@ if (localStorage has 'acc_token')
         cointinue
 */
 
+var urlParams = new URLSearchParams(window.location.search);
 var ref_token = localStorage.getItem('ref_token');
 var acc_token = localStorage.getItem('acc_token');
 
@@ -40,12 +41,12 @@ if (acc_token != null) {
     }
 }
 
-document.getElementById("but-auth").addEventListener('click', ir);
+document.getElementById("but-ir").addEventListener('click', ir);
 
 function ir() {
     if (loc != "") {
         window.location.href = loc;
     } else {
-        window.location.href = "auth.html";
+        window.location.href = "auth.html" + (urlParams.get('code') != null ? "?code=" + urlParams.get('code') : "");
     }
 }
