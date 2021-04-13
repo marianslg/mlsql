@@ -1,5 +1,5 @@
-import * as db from "./modules/db/db.js";
-import * as meli from "./modules/meli/meli.js"
+import * as db from "./db/db.js";
+import * as meli from "./meli/meli.js"
 
 const delay_pre_search_item = 400;
 var total_result_pre_search = 0;
