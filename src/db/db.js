@@ -21,7 +21,6 @@ export function create_tables() {
 
 export function execute_query(query) {
     try {
-        //let result = 
         console.log(sql_client.exec(query));
         let result = [];
 

@@ -1,6 +1,6 @@
 import * as db from "./db/db.js";
 import * as meli from "./meli/meli.js"
-import * as options from  "./options.js"
+import * as options from "./options.js"
 
 const delay_pre_search_item = 400;
 var total_result_pre_search = 0;
@@ -57,13 +57,14 @@ function execute_query() {
     document.getElementById("result-text").innerHTML = "";
 
     if (result_query[0]) {
+        document.getElementById("result-text").style.color = 'black';
+
         cant_rows = result_query[1].length;
 
         if (cant_rows > 0) {
             createTable(result_query[1]);
         }
         else {
-            document.getElementById("result-text").style.color = 'black';
             document.getElementById("result-text").innerHTML = "La consulta no devolvió resultados.";
         }
 
@@ -122,6 +123,9 @@ function createTable(tableData) {
 }
 
 async function search_all_items() {
+    //Limpio las tablas
+    db.execute_query("DELETE FROM sellers; DELETE FROM Items;");
+
     document.getElementById('info-search').innerHTML = "Buscando..."
     document.getElementById('button-search').disabled = true;
     document.getElementById('input-search-value').disabled = true;
@@ -151,6 +155,13 @@ async function search_all_items() {
 function set_selects() {
     let actions = document.getElementById("actions");
 
+    let option = document.createElement("option");
+
+    option.text = "Acciones";
+    option.hidden = true;
+
+    actions.add(option);
+
     for (let op of options.options) {
         let option = document.createElement("option");
 
@@ -164,5 +175,5 @@ function set_selects() {
 function add_query() {
     var e = document.getElementById("actions");
 
-    document.getElementById('textarea-query').value+= "\n" + e.value
+    document.getElementById('textarea-query').value += "\n" + e.value
 }
