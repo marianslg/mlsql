@@ -31,9 +31,13 @@ var acc_token = localStorage.getItem('acc_token');
 var href = "";
 
 if (acc_token != null) {
+    document.getElementById("text-logo").innerHTML = 'Probando token...';
+
     if (await test_token()) {
         href = "search.html";
     } else if (ref_token != null) {
+        document.getElementById("text-logo").innerHTML = 'Refrescando token...';
+
         let result_refresh = await refresh_token(ref_token);
 
         if (result_refresh.status == 200) {
@@ -46,6 +50,8 @@ if (acc_token != null) {
 if (urlParams.has('code')) {
     let code = urlParams.get('code')
 
+    document.getElementById("text-logo").innerHTML = 'Generando token...';
+
     let json = await generate_token(code);
 
     if (json.refresh_token != undefined && json.access_token != undefined) {
@@ -56,5 +62,7 @@ if (urlParams.has('code')) {
         alert("Error en autenticación: \n" + json.message);
     }
 }
+
+document.getElementById("text-logo").innerHTML = '';
 
 window.location.href = (href != "" ? href : "auth.html");

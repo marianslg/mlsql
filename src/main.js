@@ -1,5 +1,6 @@
 import * as db from "./db/db.js";
 import * as meli from "./meli/meli.js"
+import * as options from  "./options.js"
 
 const delay_pre_search_item = 400;
 var total_result_pre_search = 0;
@@ -18,6 +19,9 @@ function init() {
 document.getElementById("button-search").addEventListener("click", search_all_items);
 document.getElementById("input-search-value").addEventListener('keyup', apply_delay(pre_search_item, delay_pre_search_item));
 document.getElementById("button-execute-query").addEventListener('click', execute_query);
+document.getElementById("actions").addEventListener('change', add_query);
+
+set_selects();
 
 async function pre_search_item() {
     let input = document.getElementById('input-search-value').value;
@@ -49,7 +53,7 @@ function execute_query() {
     let cant_rows = 0;
     let result_status = document.getElementById("result-status");
 
-   // document.getElementById("result-content").innerHTML = "";
+    // document.getElementById("result-content").innerHTML = "";
     document.getElementById("result-text").innerHTML = "";
 
     if (result_query[0]) {
@@ -137,8 +141,28 @@ async function search_all_items() {
 
     document.getElementById('info-search').innerHTML = "<b>" + total_results_real + "</b> items encontrados"
     document.getElementById('button-execute-query').disabled = false;
-    document.getElementById('textarea-query').value = "SELECT seller_id, count(seller_id) as 'Cantidad' FROM items GROUP BY seller_id HAVING Cantidad > 10 ORDER BY CANTIDAD DESC";
+    //document.getElementById('textarea-query').value = "SELECT seller_id, count(seller_id) as 'Cantidad' FROM items GROUP BY seller_id HAVING Cantidad > 10 ORDER BY CANTIDAD DESC";
     document.getElementById('button-execute-query').disabled = false;
+    document.getElementById('actions').disabled = false;
     document.getElementById('button-search').disabled = false;
     document.getElementById('input-search-value').disabled = false;
+}
+
+function set_selects() {
+    let actions = document.getElementById("actions");
+
+    for (let op of options.options) {
+        let option = document.createElement("option");
+
+        option.text = op.name;
+        option.value = op.query;
+
+        actions.add(option);
+    }
+}
+
+function add_query() {
+    var e = document.getElementById("actions");
+
+    document.getElementById('textarea-query').value+= "\n" + e.value
 }
